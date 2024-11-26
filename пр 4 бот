@@ -1,0 +1,12 @@
+import telebot #Імпортується бібліотека telebot
+
+token='7734528592:AAHhgei75zC6BG4m445ZtB-ODOhbH47awTI' #ключ доступу Telegram-бота. Токен видається через BotFather у Telegram 
+
+bot = telebot.TeleBot(token) #створення екземпляра бота.
+
+@bot.message_handler(content_types=["text"]) #Декоратор, який визначає обробник для певних типів повідомлень.
+def repeat_all_messages(message): #Це функція, яка буде викликатися, коли бот отримує текстове повідомлення.
+    bot.send_message(message.chat.id, message.text) #Надсилається відповідь користувачу.повторює повідомлення
+
+if __name__ ==  '__main__': #перевіряє, чи файл запускається напряму, а не імпортується як модуль в інший файл.Якщо файл запускається, виконується код нижче
+     bot.polling() #запускає безперервний процес опитування серверів Telegram
